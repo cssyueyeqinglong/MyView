@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <!--<style name="text_editStyle" >
+        <item name="android:layout_height">47dp</item>
+        <item name="android:layout_width">47dp</item>
+        <item name="android:background">@mipmap/bg_verify</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/common_blue_0090FF</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>-->
+        <TextView
+            android:id="@+id/tv_01"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+            android:background="@mipmap/bg_verify"
+            android:gravity="center"
+            android:textColor="#0090ff"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_02"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+            android:background="@mipmap/bg_verify"
+            android:gravity="center"
+            android:textColor="#0090ff"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_03"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+            android:background="@mipmap/bg_verify"
+            android:gravity="center"
+            android:textColor="#0090ff"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_04"
+            android:layout_width="47dp"
+            android:layout_height="match_parent"
+            android:background="@mipmap/bg_verify"
+            android:gravity="center"
+            android:textColor="#0090ff"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@android:color/transparent"
+        android:inputType="number" />
+</FrameLayout>

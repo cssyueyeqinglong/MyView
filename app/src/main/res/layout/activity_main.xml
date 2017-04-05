@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="allview.cy.com.allview.MainActivity">
+    android:orientation="vertical"
+    tools:context="cy.cy.com.allview.act.MainActivity">
 
-    <TextView
+    <cy.cy.com.allview.view.WeatherView
+        android:id="@+id/weatherView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:padding="10dp" />
 
-</RelativeLayout>
+    <cy.cy.com.allview.view.PwdView
+        android:id="@+id/pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+</LinearLayout>
