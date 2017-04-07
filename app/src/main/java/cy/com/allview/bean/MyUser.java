@@ -1,4 +1,4 @@
-package cy.cy.com.allview.bean;
+package cy.com.allview.bean;
 
 /**
  * Created by Administrator

@@ -1,4 +1,4 @@
-package cy.cy.com.allview.bean;
+package cy.com.allview.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
  * des:
  */
 
-public class Book implements Parcelable{
+public class Book implements Parcelable {
     public int bookId;
     public String bookName;
 
@@ -17,7 +17,6 @@ public class Book implements Parcelable{
         this.bookId = bookId;
         this.bookName = bookName;
     }
-
 
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -46,5 +45,10 @@ public class Book implements Parcelable{
     protected Book(Parcel in) {
         bookId = in.readInt();
         bookName = in.readString();
+    }
+
+    @Override
+    public String toString() {
+        return "bookId===" + bookId + ",bookName=" + bookName;
     }
 }

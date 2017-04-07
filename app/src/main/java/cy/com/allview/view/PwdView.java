@@ -1,4 +1,4 @@
-package cy.cy.com.allview.view;
+package cy.com.allview.view;
 
 import android.content.Context;
 import android.text.Editable;
@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import cy.cy.com.allview.R;
+import cy.com.allview.R;
 
 /**
  * Created by Administrator

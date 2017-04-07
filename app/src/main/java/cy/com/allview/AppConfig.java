@@ -1,4 +1,4 @@
-package cy.cy.com.allview;
+package cy.com.allview;
 
 import android.app.ActivityManager;
 import android.app.Application;

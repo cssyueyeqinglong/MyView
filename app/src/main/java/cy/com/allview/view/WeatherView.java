@@ -1,4 +1,4 @@
-package cy.cy.com.allview.view;
+package cy.com.allview.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import cy.cy.com.allview.R;
+import cy.com.allview.R;
 
 /**
  * Created by Administrator

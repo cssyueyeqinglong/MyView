@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cy.cy.com.allview.act.MainActivity">
+    tools:context="cy.com.allview.act.MainActivity">
 
-    <cy.cy.com.allview.view.WeatherView
+    <cy.com.allview.view.WeatherView
         android:id="@+id/weatherView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp" />
 
-    <cy.cy.com.allview.view.PwdView
+    <cy.com.allview.view.PwdView
         android:id="@+id/pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
