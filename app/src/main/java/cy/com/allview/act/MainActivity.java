@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.IBinder;
 import android.os.Looper;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+import cy.com.allview.ISecurityCenter;
+import cy.com.allview.aidl.BinderPool;
+import cy.com.allview.aidl.SecurityCenterImpl;
 import cy.com.allview.bean.Book;
 import cy.com.allview.bean.MyUser;
 import cy.com.allview.R;
@@ -37,15 +42,33 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
         mPv.setInputCompleteLisenter(this);
         MyUser.mUserId = 2;
         Log.d("log", "MainActivity.useId====" + MyUser.mUserId);
+        //模拟通过本地文件来实现IPC
         mHandlerThread = new HandlerThread("Test", 5);
         mHandlerThread.start();
         mHandler = new Handler(mHandlerThread.getLooper());
         mHandler.post(mTask);
+
+
     }
 
     private Runnable mTask = new Runnable() {
         @Override
         public void run() {
+
+            //通过Binder池来实现当多个AIDL文件同时调起服务端而避免实现很多个Service，从而简化到只需要开启一个服务，然后通过
+            //Binder池来找到对应的Binder，
+            //如果需要在添加一个AIDL，就不需要再申请一个服务来实现，而只用在BinderPool中多加一个binderCode就好了
+            BinderPool binderPool = BinderPool.getInstance(MainActivity.this);
+            IBinder binder = binderPool.queryBinder(BinderPool.SECTURY_CENTER_AIDL_CODE);
+            ISecurityCenter iSecurityCenter = SecurityCenterImpl.Stub.asInterface(binder);
+            try {
+                String abcde = iSecurityCenter.encrypt("abcde");
+                Logger.d("encode===" + abcde);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            if (true) return;
+            //写入文件到本地
             User user = new User("张三", 20, 60);
             String path;
             if (Environment.getExternalStorageState()
