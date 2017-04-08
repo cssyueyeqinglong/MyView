@@ -11,21 +11,22 @@ import java.io.Serializable;
  * des:
  */
 
-public class User implements Parcelable,Serializable{
+public class User implements Parcelable, Serializable {
     public String name;
-    public String id;
-    public int age;
+    public int id;
+    public int sex;
 
-    public User(String name, String id, int age) {
+    public User(){};
+    public User(String name, int id, int age) {
         this.name = name;
         this.id = id;
-        this.age = age;
+        this.sex = age;
     }
 
     protected User(Parcel in) {
         name = in.readString();
-        id = in.readString();
-        age = in.readInt();
+        id = in.readInt();
+        sex = in.readInt();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -48,12 +49,12 @@ public class User implements Parcelable,Serializable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(id);
-        dest.writeInt(age);
+        dest.writeInt(id);
+        dest.writeInt(sex);
     }
 
     @Override
     public String toString() {
-        return "name=="+name+",id=="+id+",age="+age;
+        return "name==" + name + ",id==" + id + ",age=" + sex;
     }
 }

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
     private Runnable mTask = new Runnable() {
         @Override
         public void run() {
-            User user = new User("张三", "20", 60);
+            User user = new User("张三", 20, 60);
             String path;
             if (Environment.getExternalStorageState()
                     .equals(Environment.MEDIA_MOUNTED)) {

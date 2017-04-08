@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cy.com.allview">
 
+    <permission android:name="cy.com.allview.provider.BOOK_PROVIDER" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -40,8 +43,10 @@
             android:process=":remote01" />
 
         <provider
-            android:name=".contentprovider.BookProvider"
-            android:authorities=".contentprovider.BookProvider"
+            android:name="cy.com.allview.contentprovider.BookProvider"
+            android:permission="cy.com.allview.provider.BOOK_PROVIDER"
+            android:authorities="cy.com.allview.contentprovider.bookprovider"
+            android:exported="true"
             android:process=":provider" />
     </application>
 
