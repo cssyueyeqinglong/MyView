@@ -1,15 +1,23 @@
 package cy.com.allview.act;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.RemoteException;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
@@ -27,18 +35,23 @@ import cy.com.allview.bean.MyUser;
 import cy.com.allview.R;
 import cy.com.allview.bean.User;
 import cy.com.allview.view.PwdView;
+import cy.com.allview.view.WeatherView;
 
 public class MainActivity extends AppCompatActivity implements PwdView.InputCompleteLisenter {
 
     private PwdView mPv;
     private HandlerThread mHandlerThread;
     private Handler mHandler;
+    private static final int REQUEST_SELECT_PICTURE = 0x01;
+    private WeatherView mWeatherView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPv = (PwdView) findViewById(R.id.pwd);
+        mWeatherView = (WeatherView) findViewById(R.id.weatherView);
+
         mPv.setInputCompleteLisenter(this);
         MyUser.mUserId = 2;
         Log.d("log", "MainActivity.useId====" + MyUser.mUserId);
@@ -49,6 +62,25 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
         mHandler.post(mTask);
 
 
+    }
+
+    public void chooseImgs(View view) {
+
+        startActivity(new Intent(this, ImageAct.class));
+    }
+
+    public void chooseImgs02(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Logger.d("权限不足");
+        } else {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_SELECT_PICTURE);
+        }
     }
 
     private Runnable mTask = new Runnable() {
@@ -120,5 +152,23 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
     @Override
     public void deleteContent(boolean isDelete) {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mWeatherView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LocationActivity.class));
+            }
+        });
+        mWeatherView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(MainActivity.this, LocationFilter.class));
+                return true;
+            }
+        });
     }
 }

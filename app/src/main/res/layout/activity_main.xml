@@ -19,4 +19,16 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="chooseImgs"
+        android:text="选取本地图库" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="chooseImgs02"
+        android:text="选取本地图库02" />
 </LinearLayout>

@@ -17,11 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //源文件目录设置
+    sourceSets {
+        main {
+            //jni lib的位置
+            jniLibs.srcDirs = jniLibs.srcDirs << 'src/jniLibs'
+            //定义多个资源文件夹,这种情况下，两个资源文件夹具有相同优先级，即如果一个资源在两个文件夹都声明了，合并会报错。
+//            res.srcDirs = ['src/main/res', 'src/main/res2']
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.orhanobut:logger:1.15'
-
+    compile files('libs/BaiduLBS_Android.jar')
+    compile project(':sticklist_lib')
 }

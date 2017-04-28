@@ -4,12 +4,16 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.orhanobut.logger.Logger;
 
 import cy.com.allview.R;
 
@@ -158,5 +162,25 @@ public class PwdView extends FrameLayout {
     public String getEditContent() {
         return etContent;
     }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Logger.d("=====================dispatchTouchEvent===============");
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Logger.d("=====================onTouchEvent===============");
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Logger.d("=====================onInterceptTouchEvent===============");
+        return super.onInterceptTouchEvent(ev);
+    }
+
 
 }

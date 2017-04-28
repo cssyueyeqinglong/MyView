@@ -103,7 +103,7 @@ public class SecondActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 3://收到新书通知
-                    Logger.d("收到新书的通知了"+msg.obj);
+                    Logger.d("收到新书的通知了" + msg.obj);
                     break;
                 default:
                     super.handleMessage(msg);
