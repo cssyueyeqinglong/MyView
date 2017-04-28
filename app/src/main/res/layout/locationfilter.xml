@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+    <se.emilsjolander.stickylistheaders.ExpandableStickyListHeadersListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:padding="16dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:fastScrollEnabled="true"
         />
 
 </LinearLayout>

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">AllView</string>
+    <string-array name="countrys">
+        <item>a</item>
+        <item>b</item>
+        <item>c</item>
+        <item>d</item>
+        <item>e</item>
+        <item>f</item>
+        <item>g</item>
+        <item>h</item>
+        <item>i</item>
+        <item>j</item>
+        <item>k</item>
+        <item>l</item>
+        <item>m</item>
+        <item>n</item>
+        <item>o</item>
+    </string-array>
 </resources>
