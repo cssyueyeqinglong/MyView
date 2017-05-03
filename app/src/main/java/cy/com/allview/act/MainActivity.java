@@ -40,8 +40,11 @@ import cy.com.allview.bean.Book;
 import cy.com.allview.bean.MyUser;
 import cy.com.allview.R;
 import cy.com.allview.bean.User;
+import cy.com.allview.contentprovider.MyWidget01;
 import cy.com.allview.view.PwdView;
 import cy.com.allview.view.WeatherView;
+
+import static cy.com.allview.contentprovider.MyWidget01.CLICK_ACTION;
 
 public class MainActivity extends AppCompatActivity implements PwdView.InputCompleteLisenter {
 
@@ -200,5 +203,12 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
         nf.contentView=remoteViews;
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(1, nf);
+    }
+
+    //生成桌面小控件
+    public void tableCreate(View view){
+        Intent intent=new Intent();
+        intent.setAction(CLICK_ACTION);
+        sendBroadcast(intent);
     }
 }

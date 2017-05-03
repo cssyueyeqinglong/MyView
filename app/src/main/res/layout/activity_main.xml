@@ -36,6 +36,12 @@
             android:layout_height="wrap_content"
             android:onClick="notifyStates"
             android:text="生成通知栏" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="tableCreate"
+            android:text="桌面小部件" />
     </LinearLayout>
 
     <Button

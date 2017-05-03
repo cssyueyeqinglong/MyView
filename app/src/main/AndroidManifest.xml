@@ -31,10 +31,11 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"> <intent-filter>
-            <action android:name="com.baidu.location.service_v2.2" >
-            </action>
-        </intent-filter></service>
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2"></action>
+            </intent-filter>
+        </service>
 
         <activity android:name=".act.MainActivity">
             <intent-filter>
@@ -75,6 +76,15 @@
         <activity android:name=".act.ImageAct" />
         <activity android:name=".act.LocationFilter" />
 
+        <receiver android:name=".contentprovider.MyWidget01">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="myWidget01_click_action" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
