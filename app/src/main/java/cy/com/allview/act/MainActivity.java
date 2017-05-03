@@ -2,6 +2,10 @@ package cy.com.allview.act;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,10 +18,12 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
@@ -170,5 +176,29 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
                 return true;
             }
         });
+    }
+
+    //生成通知栏
+    public void notifyStates(View view) {
+        Notification.Builder notification = new Notification.Builder(this);
+        notification.setSmallIcon(R.mipmap.ic_launcher);
+        notification.setWhen( System.currentTimeMillis());
+        notification.setContentTitle("This is Title");
+        notification.setContentText("Hello World!");
+//        notification.setDefaults( Notification.FLAG_AUTO_CANCEL);
+        Intent intent = new Intent(this, SecondActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivities(this, 0, new Intent[]{intent}, PendingIntent.FLAG_UPDATE_CURRENT);
+        notification.setContentIntent(pendingIntent);
+        Notification nf = notification.build();
+        nf.flags=Notification.FLAG_AUTO_CANCEL;
+        //通过RemoteViews自定义通知栏布局
+        RemoteViews remoteViews=new RemoteViews(getPackageName(),R.layout.notity_for_me);
+        remoteViews.setImageViewResource(R.id.iv_01,R.mipmap.bg_verify_press);
+        remoteViews.setTextViewText(R.id.tv_01,"右标题");
+        remoteViews.setTextViewText(R.id.tv_02,"右内容");
+        remoteViews.setOnClickPendingIntent(R.id.tv_02,PendingIntent.getActivities(this,0,new Intent[]{new Intent(this,ThridActivity.class)},PendingIntent.FLAG_UPDATE_CURRENT));
+        nf.contentView=remoteViews;
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(1, nf);
     }
 }
