@@ -37,7 +37,7 @@ import cy.com.allview.service.BookManagerService;
 /**
  * Created by Administrator
  * on 2017/3/31.
- * des:
+ * des:aidl通讯客户端
  */
 
 public class SecondActivity extends AppCompatActivity {

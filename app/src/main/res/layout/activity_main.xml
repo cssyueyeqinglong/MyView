@@ -42,6 +42,12 @@
             android:layout_height="wrap_content"
             android:onClick="tableCreate"
             android:text="桌面小部件" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="modifyNotify"
+            android:text="模拟通知栏" />
     </LinearLayout>
 
     <Button

@@ -85,6 +85,9 @@
                 <action android:name="myWidget01_click_action" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".act.NoticeActOne" android:process=":test01"/>
+        <activity android:name=".act.NoticeActTwo" />
     </application>
 
 </manifest>

@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
     public void notifyStates(View view) {
         Notification.Builder notification = new Notification.Builder(this);
         notification.setSmallIcon(R.mipmap.ic_launcher);
-        notification.setWhen( System.currentTimeMillis());
+        notification.setWhen(System.currentTimeMillis());
         notification.setContentTitle("This is Title");
         notification.setContentText("Hello World!");
 //        notification.setDefaults( Notification.FLAG_AUTO_CANCEL);
@@ -193,22 +193,28 @@ public class MainActivity extends AppCompatActivity implements PwdView.InputComp
         PendingIntent pendingIntent = PendingIntent.getActivities(this, 0, new Intent[]{intent}, PendingIntent.FLAG_UPDATE_CURRENT);
         notification.setContentIntent(pendingIntent);
         Notification nf = notification.build();
-        nf.flags=Notification.FLAG_AUTO_CANCEL;
+        nf.flags = Notification.FLAG_AUTO_CANCEL;
         //通过RemoteViews自定义通知栏布局
-        RemoteViews remoteViews=new RemoteViews(getPackageName(),R.layout.notity_for_me);
-        remoteViews.setImageViewResource(R.id.iv_01,R.mipmap.bg_verify_press);
-        remoteViews.setTextViewText(R.id.tv_01,"右标题");
-        remoteViews.setTextViewText(R.id.tv_02,"右内容");
-        remoteViews.setOnClickPendingIntent(R.id.tv_02,PendingIntent.getActivities(this,0,new Intent[]{new Intent(this,ThridActivity.class)},PendingIntent.FLAG_UPDATE_CURRENT));
-        nf.contentView=remoteViews;
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.notity_for_me);
+        remoteViews.setImageViewResource(R.id.iv_01, R.mipmap.bg_verify_press);
+        remoteViews.setTextViewText(R.id.tv_01, "右标题");
+        remoteViews.setTextViewText(R.id.tv_02, "右内容");
+        remoteViews.setOnClickPendingIntent(R.id.tv_02, PendingIntent.getActivities(this, 0, new Intent[]{new Intent(this, ThridActivity.class)}, PendingIntent.FLAG_UPDATE_CURRENT));
+        nf.contentView = remoteViews;
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(1, nf);
     }
 
     //生成桌面小控件
-    public void tableCreate(View view){
-        Intent intent=new Intent();
+    public void tableCreate(View view) {
+        Intent intent = new Intent();
         intent.setAction(CLICK_ACTION);
         sendBroadcast(intent);
+    }
+
+    //模拟通知栏
+    public void modifyNotify(View view) {
+        Intent intent = new Intent(this, NoticeActOne.class);
+        startActivity(intent);
     }
 }
